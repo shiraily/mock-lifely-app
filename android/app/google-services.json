@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "676255384891",
+    "firebase_url": "https://lifely-app-47084.firebaseio.com",
+    "project_id": "lifely-app-47084",
+    "storage_bucket": "lifely-app-47084.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676255384891:android:05a6213aa95c7b547a231e",
+        "android_client_info": {
+          "package_name": "shiraily.lifely_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676255384891-jtoqeqa29epoi584v9unjn2ms480g1dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxZsEmfMvUKdfrei-L1XF9xu-pq_Wkgus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676255384891-jtoqeqa29epoi584v9unjn2ms480g1dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
