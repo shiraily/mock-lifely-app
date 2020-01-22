@@ -1,0 +1,14 @@
+{
+  "to": "/topics/all",
+  "priority": "high",
+  "notification" : {
+    "title" : "梅雨時の洗濯について悩んでいませんか？",
+    "body" : "詳細はこちら"
+  },
+  "data" : {
+    "id" : "1001",
+    "message" : "message 文字列",
+    "metadata" : "metadata 文字列",
+    "click_action": "FLUTTER_NOTIFICATION_CLICK"
+  }
+}

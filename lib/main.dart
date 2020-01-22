@@ -1,6 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';  // ライブラリのインポート
+
 
 void main() => runApp(MyApp());
 
@@ -46,19 +47,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -113,5 +101,64 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  final FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print("onMessage: $message");
+        _buildDialog(context, "onMessage");
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print("onLaunch: $message");
+        _buildDialog(context, "onLaunch");
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print("onResume: $message");
+        _buildDialog(context, "onResume");
+      },
+    );
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
+    _firebaseMessaging.getToken().then((String token) {
+      assert(token != null);
+      print("Push Messaging token: $token");
+    });
+    _firebaseMessaging.subscribeToTopic("/topics/all");
+  }
+
+  // ダイアログを表示するメソッド
+  void _buildDialog(BuildContext context, String message) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            content: new Text("Message: $message"),
+            actions: <Widget>[
+              new FlatButton(
+                child: const Text('CLOSE'),
+                onPressed: () {
+                  Navigator.pop(context, false);
+                },
+              ),
+              new FlatButton(
+                child: const Text('SHOW'),
+                onPressed: () {
+                  Navigator.pop(context, true);
+                },
+              ),
+            ],
+          );
+        }
+    );
   }
 }
