@@ -34,8 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row( // for padding
               children: <Widget>[
@@ -76,20 +77,75 @@ class _MyHomePageState extends State<MyHomePage> {
             Row( // for padding
               children: <Widget>[
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 )
               ],
             ),
-            Text(
-                'こんにちは。梅雨の時期の洗濯に悩んでいませんか。'
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment:  MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "朝のタスク一覧",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    )
+                  ),
+                  SizedBox(
+                      height: 5
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Checkbox(
+                        value: true,
+                      ),
+                      Text("弁当をかばんに入れる"),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Checkbox(
+                        value: false,
+                      ),
+                      Text("ゴミ出し"),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Checkbox(
+                        activeColor: Colors.blue,
+                        value: false,
+                      ),
+                      Text("株価チェック"),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            Text(
-                '↓詳しくはこちら↓'
-            ),
-            RaisedButton(
-              onPressed: _launchURL,
-              child: Text('梅雨時の洗濯､プロ実践｢部屋干し｣5つのコツ'),
-            ),
+            Container(
+              padding: EdgeInsets.only(left: 16, top: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment:  MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "今日のお役立ち情報",
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  SizedBox(
+                      height: 5
+                  ),
+                  Text("こんにちは。梅雨の時期の洗濯に悩んでいませんか。"),
+                  Text("詳しくはこちら↓"),
+                  RaisedButton(
+                    onPressed: _launchURL,
+                    child: Text("梅雨時の洗濯､プロ実践｢部屋干し｣5つのコツ"),
+                  ),
+                ]
+              )
+            )
           ],
         ),
       ),
