@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';  // ライブラリのインポート
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,6 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings)
+          ),
+        ],
       ),
       body: Container(
         child: Column(
@@ -60,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     children: <Widget>[
                       new Icon(Icons.wb_sunny),
-                      Text("19℃")
+                      Text("0-19℃")
                     ],
                   ),
                 ),
@@ -96,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment:  MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "朝のタスク一覧",
+                    "朝のタスク",
                     style: TextStyle(
                       fontSize: 20.0,
                     )
