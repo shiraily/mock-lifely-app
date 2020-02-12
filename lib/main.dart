@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';  // ライブラリのインポート
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 void main() => runApp(MyApp());
@@ -10,6 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('ja', 'JP'),
+      ],
       title: 'Lifely',
       theme: ThemeData(
         primarySwatch: Colors.blue,
