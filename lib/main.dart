@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(title: 'Lifely'),
       routes: <String, WidgetBuilder>{
-        '/tasks/suggested': (_) => new Suggestion(),
+        '/tasks/suggested': (_) => new SuggestedList(),
       },
     );
   }
@@ -43,16 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings)
-          ),
+          IconButton(icon: Icon(Icons.settings)),
         ],
       ),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row( // for padding
+            Row(
+              // for padding
               children: <Widget>[
                 SizedBox(
                   height: 10,
@@ -64,10 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Container(
                   child: Column(
-                    children: <Widget>[
-                      new Icon(Icons.wb_sunny),
-                      Text("0-19℃")
-                    ],
+                    children: <Widget>[new Icon(Icons.wb_sunny), Text("0-19℃")],
                   ),
                 ),
                 Container(
@@ -79,16 +75,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Container(
-                  child: Column(
-                    children: <Widget>[
-                      new Icon(Icons.error),
-                      Text("注意あり"),
-                    ],
-                  )
-                )
+                    child: Column(
+                  children: <Widget>[
+                    new Icon(Icons.error),
+                    Text("注意あり"),
+                  ],
+                ))
               ],
             ),
-            Row( // for padding
+            Row(
+              // for padding
               children: <Widget>[
                 SizedBox(
                   height: 10,
@@ -99,17 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(left: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment:  MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "朝のタスク",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    )
-                  ),
-                  SizedBox(
-                      height: 5
-                  ),
+                  Text("朝のタスク",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      )),
+                  SizedBox(height: 5),
                   Row(
                     children: <Widget>[
                       Checkbox(
@@ -139,27 +131,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 16, top: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment:  MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "今日のお役立ち情報",
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  SizedBox(
-                      height: 5
-                  ),
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed("/tasks/suggested");
-                    },
-                    child: Text("詳しくはこちら"),
-                  ),
-                ]
-              )
-            )
+                padding: EdgeInsets.only(left: 16, top: 16),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "今日のお役立ち情報",
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                      SizedBox(height: 5),
+                      RaisedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/tasks/suggested");
+                        },
+                        child: Text("詳しくはこちら"),
+                      ),
+                    ]))
           ],
         ),
       ),
@@ -221,7 +209,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           );
-        }
-    );
+        });
   }
 }
