@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(title: 'Lifely'),
       routes: <String, WidgetBuilder>{
-        '/tasks/suggested': (_) => new SuggestedList(),
+        '/tasks/suggested': (_) => SuggestedList(),
       },
     );
   }
@@ -63,13 +63,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Container(
                   child: Column(
-                    children: <Widget>[new Icon(Icons.wb_sunny), Text("0-19℃")],
+                    children: <Widget>[Icon(Icons.wb_sunny), Text("0-19℃")],
                   ),
                 ),
                 Container(
                   child: Column(
                     children: <Widget>[
-                      new Icon(Icons.train),
+                      Icon(Icons.train),
                       Text("平常通り"),
                     ],
                   ),
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                     child: Column(
                   children: <Widget>[
-                    new Icon(Icons.error),
+                    Icon(Icons.error),
                     Text("注意あり"),
                   ],
                 ))
@@ -192,16 +192,16 @@ class _MyHomePageState extends State<MyHomePage> {
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return new AlertDialog(
-            content: new Text("Message: $message"),
+          return AlertDialog(
+            content: Text("Message: $message"),
             actions: <Widget>[
-              new FlatButton(
+              FlatButton(
                 child: const Text('CLOSE'),
                 onPressed: () {
                   Navigator.pop(context, false);
                 },
               ),
-              new FlatButton(
+              FlatButton(
                 child: const Text('SHOW'),
                 onPressed: () {
                   Navigator.pop(context, true);
