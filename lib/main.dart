@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:lifely_app/task/suggestion.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       home: MyHomePage(title: 'Lifely'),
+      routes: <String, WidgetBuilder>{
+        '/tasks/suggested': (_) => new Suggestion(),
+      },
     );
   }
 }
@@ -148,11 +151,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(
                       height: 5
                   ),
-                  Text("こんにちは。梅雨の時期の洗濯に悩んでいませんか。"),
-                  Text("詳しくはこちら↓"),
                   RaisedButton(
-                    onPressed: _launchURL,
-                    child: Text("梅雨時の洗濯､プロ実践｢部屋干し｣5つのコツ"),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("/tasks/suggested");
+                    },
+                    child: Text("詳しくはこちら"),
                   ),
                 ]
               )
@@ -161,15 +164,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-  }
-
-  _launchURL() async {
-    const url = 'https://toyokeizai.net/articles/-/282543';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   final FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
