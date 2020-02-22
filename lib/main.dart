@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifely_app/components/task/create_task_modal.dart';
 import 'package:lifely_app/components/task/suggestion.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(title: 'Lifely'),
       routes: <String, WidgetBuilder>{
-        '/tasks/suggested': (_) => SuggestedList(),
+        '/components/tasks/suggested': (_) => SuggestedList(),
+        '/components/tasks/create_task_modal': (_) => CreateTaskModal(),
       },
     );
   }
@@ -143,13 +145,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       SizedBox(height: 5),
                       RaisedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed("/tasks/suggested");
+                          Navigator.of(context)
+                              .pushNamed("/components/tasks/suggested");
                         },
                         child: Text("詳しくはこちら"),
                       ),
                     ]))
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return CreateTaskModal();
+                  },
+                  fullscreenDialog: true));
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
