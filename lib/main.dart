@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifely_app/task/suggestion.dart';
+import 'package:lifely_app/components/task/suggestion.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
