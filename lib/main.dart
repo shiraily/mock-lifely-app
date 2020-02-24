@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Lifely'),
       routes: <String, WidgetBuilder>{
         '/components/tasks/suggested': (_) => SuggestedList(),
-        '/components/tasks/create_task_modal': (_) => CreateTaskModal(),
       },
     );
   }
@@ -156,13 +155,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return CreateTaskModal();
-                  },
-                  fullscreenDialog: true));
+          showDialog(
+              context: context,
+              builder: (context) {
+                return CreateTaskModal();
+              });
         },
         child: Icon(Icons.add),
       ),
